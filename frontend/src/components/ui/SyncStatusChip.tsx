@@ -19,16 +19,18 @@ export function SyncStatusChip({
   className = "",
   showSynced = false,
 }: SyncStatusChipProps) {
-  const [syncState, setSyncState] = useState<SyncState>(() => ({
-    isOnline: typeof navigator !== "undefined" ? navigator.onLine : true,
+  const [mounted, setMounted] = useState(false);
+  const [syncState, setSyncState] = useState<SyncState>({
+    isOnline: true,
     isSyncing: false,
     pendingCount: 0,
     lastSyncTime: null,
     lastError: null,
     retryAttempt: 0,
-  }));
+  });
 
   useEffect(() => {
+    setMounted(true);
     if (forcedState) return;
     const unsubscribe = subscribeSyncState((s) => setSyncState(s));
     return unsubscribe;
@@ -48,6 +50,10 @@ export function SyncStatusChip({
     currentState = "pending";
   } else {
     currentState = "synced";
+  }
+
+  if (!mounted && !forcedState) {
+    return null;
   }
 
   if (currentState === "synced" && !showSynced && !forcedState) {

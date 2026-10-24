@@ -8,19 +8,25 @@ interface SyncStatusChipProps {
 }
 
 export function SyncStatusChip({ className = "" }: SyncStatusChipProps) {
-  const [syncState, setSyncState] = useState<SyncState>(() => ({
-    isOnline: typeof navigator !== "undefined" ? navigator.onLine : true,
+  const [mounted, setMounted] = useState(false);
+  const [syncState, setSyncState] = useState<SyncState>({
+    isOnline: true,
     isSyncing: false,
     pendingCount: 0,
     lastSyncTime: null,
     lastError: null,
     retryAttempt: 0,
-  }));
+  });
 
   useEffect(() => {
+    setMounted(true);
     const unsubscribe = subscribeSyncState((s) => setSyncState(s));
     return unsubscribe;
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   if (!syncState.isOnline) {
     return (

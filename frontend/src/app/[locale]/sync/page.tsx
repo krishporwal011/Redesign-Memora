@@ -7,14 +7,14 @@ import { subscribeSyncState, syncAllUnsynced, type SyncState } from "@/lib/sync"
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export default function SyncCenterPage() {
-  const [syncState, setSyncState] = useState<SyncState>(() => ({
-    isOnline: typeof navigator !== "undefined" ? navigator.onLine : true,
+  const [syncState, setSyncState] = useState<SyncState>({
+    isOnline: true,
     isSyncing: false,
     pendingCount: 0,
     lastSyncTime: null,
     lastError: null,
     retryAttempt: 0,
-  }));
+  });
   const [manualSyncing, setManualSyncing] = useState(false);
   const [syncFeedback, setSyncFeedback] = useState<string | null>(null);
 

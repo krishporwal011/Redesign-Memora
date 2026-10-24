@@ -8,14 +8,14 @@ import { BigButton } from "@/components/ui/BigButton";
 import { subscribeSyncState, type SyncState } from "@/lib/sync";
 
 export default function OfflineExplanationPage() {
-  const [syncState, setSyncState] = useState<SyncState>(() => ({
-    isOnline: typeof navigator !== "undefined" ? navigator.onLine : false,
+  const [syncState, setSyncState] = useState<SyncState>({
+    isOnline: false,
     isSyncing: false,
     pendingCount: 0,
     lastSyncTime: null,
     lastError: null,
     retryAttempt: 0,
-  }));
+  });
 
   useEffect(() => {
     const unsubscribe = subscribeSyncState((s) => setSyncState(s));

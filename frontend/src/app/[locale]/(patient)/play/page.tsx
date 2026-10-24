@@ -53,14 +53,14 @@ export default function PatientPlayPage() {
   const [hintMessage, setHintMessage] = useState<string>("");
 
   // Offline sync setup
-  const [, setSyncState] = useState<SyncState>(() => ({
-    isOnline: typeof navigator !== "undefined" ? navigator.onLine : true,
+  const [, setSyncState] = useState<SyncState>({
+    isOnline: true,
     isSyncing: false,
     pendingCount: 0,
     lastSyncTime: null,
     lastError: null,
     retryAttempt: 0,
-  }));
+  });
 
   useEffect(() => {
     const cleanupAutoSync = setupAutoSync();

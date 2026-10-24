@@ -3,6 +3,7 @@
 !.env.example
 node_modules/
 .next/
+.venv
 .venv/
 __pycache__/
 *.log
@@ -11,3 +12,4 @@ coverage/
 *.zip
 .DS_Store
 *.tsbuildinfo
+*.swp

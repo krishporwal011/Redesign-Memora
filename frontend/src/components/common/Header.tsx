@@ -34,9 +34,15 @@ export function Header() {
   const { calmMode, toggleCalmMode } = useMemoraStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const languageMenuRef = useRef<HTMLDivElement>(null);
   const isPatientRoute = pathname.includes("/play");
-  const isCalmHome = pathname === "/" && calmMode;
+  const isCalmActive = mounted && calmMode;
+  const isCalmHome = isCalmActive && pathname === "/";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLocaleChange = (newLocale: (typeof LOCALES)[number]["code"]) => {
     setIsLanguageMenuOpen(false);
@@ -92,7 +98,7 @@ export function Header() {
             <div>
               <span
                 className="text-lg md:text-xl font-extrabold tracking-tight leading-none block"
-                style={{ color: isCalmHome ? "var(--ink)" : "var(--primary-ink)" }}
+                style={{ color: "var(--primary-ink)" }}
               >
                 {t("appName")}
               </span>
@@ -197,15 +203,15 @@ export function Header() {
               className="inline-flex items-center gap-2 px-3.5 sm:px-4 rounded-full border text-xs sm:text-sm font-bold transition-all active:scale-95 cursor-pointer"
               style={{
                 minHeight: "48px",
-                background: calmMode ? (isCalmHome ? "var(--accent-light)" : "var(--accent)") : "var(--primary)",
-                color: calmMode ? (isCalmHome ? "var(--ink)" : "var(--accent-ink)") : "var(--primary-ink)",
-                borderColor: calmMode ? "var(--accent)" : "var(--primary-light)",
+                background: isCalmActive ? (isCalmHome ? "var(--accent-light)" : "var(--accent)") : "var(--primary)",
+                color: isCalmActive ? (isCalmHome ? "var(--ink)" : "var(--accent-ink)") : "var(--primary-ink)",
+                borderColor: isCalmActive ? "var(--accent)" : "var(--primary-light)",
               }}
-              aria-pressed={calmMode}
-              aria-label={calmMode ? t("calmModeOn") : t("calmModeOff")}
+              aria-pressed={isCalmActive}
+              aria-label={isCalmActive ? t("calmModeOn") : t("calmModeOff")}
             >
               <Activity size={16} aria-hidden="true" />
-              <span>{calmMode ? t("calmModeOn") : t("calmMode")}</span>
+              <span>{isCalmActive ? t("calmModeOn") : t("calmMode")}</span>
             </button>
 
             {/* Showcase Fullscreen Menu Toggle (min 48px target) */}

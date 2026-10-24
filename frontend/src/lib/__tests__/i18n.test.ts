@@ -5,6 +5,15 @@ import as from "../../../locales/as.json";
 import bn from "../../../locales/bn.json";
 import brx from "../../../locales/brx.json";
 import mni from "../../../locales/mni.json";
+import gu from "../../../locales/gu.json";
+import kn from "../../../locales/kn.json";
+import ml from "../../../locales/ml.json";
+import mr from "../../../locales/mr.json";
+import or from "../../../locales/or.json";
+import pa from "../../../locales/pa.json";
+import ta from "../../../locales/ta.json";
+import te from "../../../locales/te.json";
+import ur from "../../../locales/ur.json";
 
 const locales = {
   hi: hi as Record<string, any>,
@@ -12,6 +21,15 @@ const locales = {
   bn: bn as Record<string, any>,
   brx: brx as Record<string, any>,
   mni: mni as Record<string, any>,
+  gu: gu as Record<string, any>,
+  kn: kn as Record<string, any>,
+  ml: ml as Record<string, any>,
+  mr: mr as Record<string, any>,
+  or: or as Record<string, any>,
+  pa: pa as Record<string, any>,
+  ta: ta as Record<string, any>,
+  te: te as Record<string, any>,
+  ur: ur as Record<string, any>,
 };
 
 describe("B23: Internationalization (i18n) verification", () => {

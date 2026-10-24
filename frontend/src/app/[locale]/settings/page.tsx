@@ -15,6 +15,15 @@ const LOCALES = [
   { code: "bn", label: "বাংলা", script: "Bengali (Bengali)" },
   { code: "brx", label: "बड़ो", script: "Devanagari (Bodo)" },
   { code: "mni", label: "ꯃꯩꯇꯩꯂꯣꯟ", script: "Meetei Mayek (Manipuri)" },
+  { code: "gu", label: "ગુજરાતી", script: "Gujarati (Gujarati)" },
+  { code: "kn", label: "ಕನ್ನಡ", script: "Kannada (Kannada)" },
+  { code: "ml", label: "മലയാളം", script: "Malayalam (Malayalam)" },
+  { code: "mr", label: "मराठी", script: "Devanagari (Marathi)" },
+  { code: "or", label: "ଓଡ଼ିଆ", script: "Oriya (Odia)" },
+  { code: "pa", label: "ਪੰਜਾਬੀ", script: "Gurmukhi (Punjabi)" },
+  { code: "ta", label: "தமிழ்", script: "Tamil (Tamil)" },
+  { code: "te", label: "తెలుగు", script: "Telugu (Telugu)" },
+  { code: "ur", label: "اردو", script: "Arabic (Urdu)" },
 ] as const;
 
 const VOICE_TEST_SAMPLES: Record<Exclude<VoiceLanguage, "auto">, string> = {
@@ -24,6 +33,15 @@ const VOICE_TEST_SAMPLES: Record<Exclude<VoiceLanguage, "auto">, string> = {
   bn: "কণ্ঠ সহায়তা প্রস্তুত।",
   brx: "रावसोल मदद थियार।",
   mni: "ꯍꯥꯏꯕ ꯃꯇꯦꯡ ꯁꯤꯖꯅꯕꯅꯤ।",
+  gu: "વોઇસ સહાય તૈયાર છે.",
+  kn: "ಧ್ವನಿ ಸಹಾಯ ಸಿದ್ಧವಾಗಿದೆ.",
+  ml: "വോയ്‌സ് സഹായം തയ്യാറാണ്.",
+  mr: "व्हॉयस सहाय्य तयार आहे.",
+  or: "ଭୋଇସ ସହାୟତା ପ୍ରସ୍ତୁତ।",
+  pa: "ਆਵਾਜ਼ ਸਹਾਇਤਾ ਤਿਆਰ ਹੈ।",
+  ta: "குரல் உதவி தயார்.",
+  te: "వాయిస్ సహాయం సిద్ధంగా ఉంది.",
+  ur: "صوتی معاونت تیار ہے۔",
 };
 
 function PreferenceSwitch({
@@ -348,7 +366,7 @@ export default function SettingsPage() {
               id="voice-language"
               value={voiceLanguage}
               onChange={(event) => updatePreference(() => setVoiceLanguage(event.target.value as VoiceLanguage))}
-              className="min-h-12 min-w-48 rounded-full border-2 px-4 text-sm font-semibold"
+              className="min-h-12 w-full max-w-[260px] min-w-[220px] rounded-full border-2 px-4 text-sm font-semibold"
               style={{ background: "var(--surface)", color: "var(--ink)", borderColor: "var(--border)" }}
             >
               <option value="auto">{tSettings("matchSiteLanguage")} ({locale.toUpperCase()})</option>

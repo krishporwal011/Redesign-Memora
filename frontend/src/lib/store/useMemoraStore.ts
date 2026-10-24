@@ -5,7 +5,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 export type DisplayMode = "gallery" | "album";
 export type FontSizePreference = "medium" | "large" | "xlarge";
-export type VoiceLanguage = "auto" | "en" | "hi" | "as" | "bn" | "brx" | "mni";
+export type VoiceLanguage = "auto" | "en" | "hi" | "as" | "bn" | "brx" | "mni" | "gu" | "kn" | "ml" | "mr" | "or" | "pa" | "ta" | "te" | "ur";
 
 export interface MemoraState {
   calmMode: boolean;

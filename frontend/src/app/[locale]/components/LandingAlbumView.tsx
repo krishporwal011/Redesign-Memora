@@ -224,26 +224,28 @@ export function LandingAlbumView({ onToggleGallery }: LandingAlbumViewProps) {
             <h2 id="how-heading" className="text-3xl font-extrabold sm:text-4xl" style={{ color: "var(--ink)" }}>{t("howItWorks")}</h2>
           </div>
 
-          <div className="grid grid-cols-1 overflow-hidden rounded-[var(--radius-card)] border-2 md:grid-cols-3" style={{ background: "var(--surface)", borderColor: "var(--primary)" }}>
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <article
-                  key={step.title}
-                  className={`p-5 sm:p-7 ${index < steps.length - 1 ? "border-b-2 md:border-b-0 md:border-r-2" : ""}`}
-                  style={{ borderColor: "var(--primary)" }}
-                >
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ background: "var(--primary-light)", borderColor: "var(--primary)", color: "var(--primary)" }}>
-                      <Icon size={23} aria-hidden="true" />
-                    </span>
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full border text-sm font-extrabold" style={{ background: "var(--primary-light)", borderColor: "var(--primary)", color: "var(--primary-dark)" }}>0{index + 1}</span>
-                  </div>
-                  <h3 className="text-lg font-extrabold" style={{ color: "var(--ink)" }}>{step.title}</h3>
-                  <p className="mt-2 text-base leading-7 sm:text-lg" style={{ color: "var(--ink-soft)" }}>{step.description}</p>
-                </article>
-              );
-            })}
+          <div className="rounded-[var(--radius-card)] border bg-white p-4 shadow-sm sm:p-5" style={{ borderColor: "var(--border)" }}>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <article
+                    key={step.title}
+                    className="rounded-[var(--radius-card)] bg-transparent p-3 sm:p-5"
+                    style={{ border: "none" }}
+                  >
+                    <div className="mb-4 flex items-center justify-between">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ background: "var(--primary-light)", borderColor: "var(--primary)", color: "var(--primary)" }}>
+                        <Icon size={23} aria-hidden="true" />
+                      </span>
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full border text-sm font-extrabold" style={{ background: "var(--primary-light)", borderColor: "var(--primary)", color: "var(--primary-dark)" }}>0{index + 1}</span>
+                    </div>
+                    <h3 className="text-lg font-extrabold" style={{ color: "var(--ink)" }}>{step.title}</h3>
+                    <p className="mt-2 text-base leading-7 sm:text-lg" style={{ color: "var(--ink-soft)" }}>{step.description}</p>
+                  </article>
+                );
+              })}
+            </div>
           </div>
 
           <div className="mt-8 flex justify-center">

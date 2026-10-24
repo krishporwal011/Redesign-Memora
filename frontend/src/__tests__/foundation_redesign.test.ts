@@ -5,17 +5,17 @@ import path from "path";
 const ROOT_FRONTEND = path.resolve(__dirname, "../..");
 const SRC_DIR = path.resolve(__dirname, "..");
 const LOCALES_DIR = path.resolve(ROOT_FRONTEND, "locales");
-const SUPPORTED_LOCALES = ["en", "hi", "as", "bn", "brx", "mni"];
+const SUPPORTED_LOCALES = ["en", "hi", "as", "bn", "brx", "mni", "gu", "kn", "ml", "mr", "or", "pa", "ta", "te", "ur"];
 
 describe("Phase 1: Foundation Redesign Tests", () => {
-  it("verifies middleware matcher and routing configuration cover all six locales", () => {
+  it("verifies middleware matcher and routing configuration cover the supported locales", () => {
     const routingContent = fs.readFileSync(path.resolve(SRC_DIR, "i18n/routing.ts"), "utf-8");
     for (const loc of SUPPORTED_LOCALES) {
       expect(routingContent).toContain(`"${loc}"`);
     }
 
     const middlewareContent = fs.readFileSync(path.resolve(SRC_DIR, "middleware.ts"), "utf-8");
-    expect(middlewareContent).toContain("/(as|bn|brx|en|hi|mni)/:path*");
+    expect(middlewareContent).toContain("/(as|bn|brx|en|gu|hi|kn|ml|mni|mr|or|pa|ta|te|ur)/:path*");
 
     for (const loc of SUPPORTED_LOCALES) {
       expect(middlewareContent).toContain(loc);
@@ -64,8 +64,8 @@ describe("Phase 1: Foundation Redesign Tests", () => {
     expect(globalsCss).not.toMatch(googleFontRegex);
   });
 
-  it("verifies 100% locale key parity across all six locale files", () => {
-    const locales = ["en", "hi", "as", "bn", "brx", "mni"];
+  it("verifies 100% locale key parity across the supported locale files", () => {
+    const locales = SUPPORTED_LOCALES;
     const loadedLocales: Record<string, any> = {};
 
     for (const loc of locales) {
@@ -113,7 +113,7 @@ describe("Phase 1: Foundation Redesign Tests", () => {
     const filesToAudit = [
       path.resolve(ROOT_FRONTEND, "public/manifest.json"),
       path.resolve(SRC_DIR, "app/layout.tsx"),
-      ...["en", "hi", "as", "bn", "brx", "mni"].map((l) => path.join(LOCALES_DIR, `${l}.json`)),
+      ...SUPPORTED_LOCALES.map((l) => path.join(LOCALES_DIR, `${l}.json`)),
     ];
 
     const violations: { file: string; word: string }[] = [];

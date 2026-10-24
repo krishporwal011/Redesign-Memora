@@ -178,5 +178,6 @@
     "voiceDescription": "Enables read-aloud buttons and spoken prompts during memory activities.",
     "active": "Active",
     "muted": "Muted"
-  }
+  },
+  "_note": "Machine-assisted translation. Requires native-speaker verification."
 }

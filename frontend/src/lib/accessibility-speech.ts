@@ -7,6 +7,15 @@ const SPEECH_TAGS: Record<Exclude<VoiceLanguage, "auto">, string> = {
   bn: "bn-IN",
   brx: "brx-IN",
   mni: "mni-IN",
+  gu: "gu-IN",
+  kn: "kn-IN",
+  ml: "ml-IN",
+  mr: "mr-IN",
+  or: "or-IN",
+  pa: "pa-IN",
+  ta: "ta-IN",
+  te: "te-IN",
+  ur: "ur-IN",
 };
 
 export function getSpeechLanguageTag(

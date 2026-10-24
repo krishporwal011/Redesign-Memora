@@ -139,6 +139,7 @@ export function LandingGalleryView({ onToggleAlbum }: LandingGalleryViewProps) {
       style={{
         background: "var(--ink)",
         color: "var(--bg)",
+        cursor: calmMode ? "none" : "auto",
       }}
     >
       {/* ── Persistent Corner HUD ── */}
@@ -199,13 +200,14 @@ export function LandingGalleryView({ onToggleAlbum }: LandingGalleryViewProps) {
       </aside>
 
       {/* ── Optional Cursor Follower on Desktop (Fine Pointer Only) ── */}
-      {isFinePointer && !calmMode && (
+      {isFinePointer && (
         <div
           className="fixed pointer-events-none z-30 transition-transform duration-75 ease-out hidden lg:block"
           style={{
             left: `${cursorPos.x}px`,
             top: `${cursorPos.y}px`,
             transform: "translate(-50%, -50%)",
+            opacity: calmMode ? 1 : 1,
           }}
         >
           <div

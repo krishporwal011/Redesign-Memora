@@ -15,6 +15,15 @@ const LOCALES = [
   { code: "bn", label: "বাং", full: "বাংলা" },
   { code: "brx", label: "बड़", full: "बड़ो" },
   { code: "mni", label: "ꯃꯩ", full: "ꯃꯩꯇꯩꯂꯣꯟ" },
+  { code: "gu", label: "ગુ", full: "ગુજરાતી" },
+  { code: "kn", label: "ಕನ", full: "ಕನ್ನಡ" },
+  { code: "ml", label: "മ", full: "മലയാളം" },
+  { code: "mr", label: "मर", full: "मराठी" },
+  { code: "or", label: "ଓ", full: "ଓଡ଼ିଆ" },
+  { code: "pa", label: "ਪੰ", full: "ਪੰਜਾਬੀ" },
+  { code: "ta", label: "த", full: "தமிழ்" },
+  { code: "te", label: "తె", full: "తెలుగు" },
+  { code: "ur", label: "ارد", full: "اردو" },
 ] as const;
 
 export function Header() {
@@ -60,8 +69,8 @@ export function Header() {
       <header
         className="sticky top-0 z-40 w-full border-b"
         style={{
-          background: isCalmHome ? "var(--bg)" : "var(--primary)",
-          borderColor: isCalmHome ? "var(--border-soft)" : "var(--primary-dark)",
+          background: "var(--primary)",
+          borderColor: "var(--primary-dark)",
           boxShadow: "var(--shadow-sm)",
         }}
       >
@@ -89,7 +98,7 @@ export function Header() {
               </span>
               <span
                 className="text-[10px] font-semibold tracking-widest uppercase block leading-tight mt-0.5"
-                style={{ color: isCalmHome ? "var(--ink-soft)" : "var(--primary-light)", opacity: 0.9 }}
+                style={{ color: "var(--primary-ink)", opacity: 0.92 }}
               >
                 {t("regionName")}
               </span>
@@ -112,8 +121,8 @@ export function Header() {
                     aria-current={isCurrent ? "page" : undefined}
                     className="min-h-12 inline-flex items-center rounded-full px-4 text-sm font-semibold no-underline transition-colors hover:bg-[var(--primary-light)]"
                     style={{
-                      color: "var(--ink)",
-                      background: isCurrent ? "var(--primary-light)" : "transparent",
+                      color: "var(--primary-ink)",
+                      background: isCurrent ? "rgba(255,255,255,0.12)" : "transparent",
                     }}
                   >
                     {item.label}
@@ -133,9 +142,9 @@ export function Header() {
                   onClick={() => setIsLanguageMenuOpen((open) => !open)}
                   className="inline-flex min-h-12 items-center gap-2 rounded-full border px-3 sm:px-4 text-xs sm:text-sm font-bold transition-colors hover:bg-white/10 cursor-pointer"
                   style={{
-                    background: isCalmHome ? "var(--surface)" : "var(--primary)",
-                    borderColor: isCalmHome ? "var(--border)" : "var(--primary-light)",
-                    color: isCalmHome ? "var(--ink)" : "var(--primary-ink)",
+                    background: "rgba(255,255,255,0.08)",
+                    borderColor: "rgba(255,255,255,0.28)",
+                    color: "var(--primary-ink)",
                   }}
                   aria-haspopup="menu"
                   aria-expanded={isLanguageMenuOpen}
@@ -206,8 +215,9 @@ export function Header() {
                 onClick={() => setIsMenuOpen(true)}
                 className="w-12 h-12 rounded-full border flex items-center justify-center transition-colors hover:bg-white/10 cursor-pointer"
                 style={{
-                  borderColor: isCalmHome ? "var(--border)" : "rgba(255, 255, 255, 0.25)",
-                  color: isCalmHome ? "var(--ink)" : "var(--primary-ink)",
+                  borderColor: "rgba(255, 255, 255, 0.28)",
+                  color: "var(--primary-ink)",
+                  background: "rgba(255,255,255,0.04)",
                 }}
                 aria-label={t("menu")}
               >
